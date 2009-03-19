@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://markdown/skin/overlay.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://markdown/locale/markdown.dtd">
+<overlay id="markdown-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script src="overlay.js"/>
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="markdown-strings" src="chrome://markdown/locale/markdown.properties"/>
+  </stringbundleset>
+
+  <menupopup id="taskPopup">
+    <menuitem id="markdown-hello" label="&markdown.label;" 
+              oncommand="markdown.onMenuItemCommand(event);"/>
+  </menupopup>
+</overlay>
