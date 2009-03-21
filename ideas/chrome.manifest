@@ -1,0 +1,4 @@
+content	bordercolors	chrome/content/
+locale	bordercolors	en-US	chrome/locale/en-US/
+
+overlay	chrome://messenger/content/messengercompose/messengercompose.xul	chrome://bordercolors/content/bordercolorsoverlay.xul

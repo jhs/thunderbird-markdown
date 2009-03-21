@@ -1,0 +1,181 @@
+<?xml version="1.0"?> 
+
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   - 
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   - 
+   - 
+   - The Initial Developer of the Original Code is Mozilla.org. 
+   - Portions created by the Initial Developer are Copyright (C) 2004
+   - the Initial Developer. All Rights Reserved.
+   - 
+   - Initially based on ConfigDate's setup
+   -
+   - Contributor(s):
+   -   Mike Krieger <mikekrieger@gmail.com>
+   - 
+   - Alternatively, the contents of this file may be used under the terms of
+   - either the GNU General Public License Version 2 or later (the "GPL"), or
+   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+   - in which case the provisions of the GPL or the LGPL are applicable instead
+   - of those above. If you wish to allow use of your version of this file only
+   - under the terms of either the GPL or the LGPL, and not to allow others to
+   - use your version of this file under the terms of the MPL, indicate your
+   - decision by deleting the provisions above and replace them with the notice
+   - and other provisions required by the GPL or the LGPL. If you do not delete
+   - the provisions above, a recipient may use your version of this file under
+   - the terms of any one of the MPL, the GPL or the LGPL.
+   - 
+   - ***** END LICENSE BLOCK ***** -->
+
+<!DOCTYPE dialog SYSTEM "chrome://bordercolors/locale/bordercolors-pref.dtd">
+
+<?xml-stylesheet href="chrome://communicator/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/prefPanels.css" type="text/css"?>
+
+
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        onload="init();"
+        buttons="accept, cancel"
+        ondialogaccept="writePrefs();"
+        persist="screenX screenY"
+        title="&bordercolors.pref.windowtitle;"
+        id="BorderColorsPref"
+ 	  style="width:45em;">
+
+  <script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js"/>
+  <script type="application/x-javascript" src="chrome://bordercolors/content/bordercolorspref.js"/>
+  
+  <groupbox flex="1">
+  <caption label="&bordercolors.pref.colorselection;"/>
+  <vbox>
+  
+  <!-- hack hack hack . . it'd be great to dynamically generate these
+  hboxes without having to resort to having 20 pre-made ones. RDF? -->
+  
+  <hbox id="borderbox0" hidden="true">
+  <label minwidth="375px" id="Identity0"  value="Account 0"/>
+  <colorpicker class="small-margin" type="button" palettename="standard" id="bordercolorpicker0"
+   prefstring="extensions.bordercolors.id0"/>
+   </hbox>
+     <hbox id="borderbox1" hidden="true">
+  <label minwidth="375px" id="Identity1"  value="Account 1"/>
+  <colorpicker class="small-margin" type="button" palettename="standard" id="bordercolorpicker1"
+   prefstring="extensions.bordercolors.id1"/>
+   </hbox>
+     <hbox id="borderbox2" hidden="true">
+  <label minwidth="375px" id="Identity2"  value="Account 2"/>
+  <colorpicker class="small-margin" type="button" palettename="standard" id="bordercolorpicker2"
+   prefstring="extensions.bordercolors.id2"/>
+   </hbox>
+     <hbox id="borderbox3" hidden="true">
+  <label minwidth="375px" id="Identity3"  value="Account 3"/>
+  <colorpicker class="small-margin" type="button" palettename="standard" id="bordercolorpicker3"
+   prefstring="extensions.bordercolors.id3"/>
+   </hbox>
+     <hbox id="borderbox4" hidden="true">
+  <label minwidth="375px" id="Identity4"  value="Account 4"/>
+  <colorpicker class="small-margin" type="button" palettename="standard" id="bordercolorpicker4"
+   prefstring="extensions.bordercolors.id4"/>
+   </hbox>
+        <hbox id="borderbox5" hidden="true">
+  <label minwidth="375px" id="Identity5"  value="Account 5"/>
+  <colorpicker class="small-margin" type="button" palettename="standard" id="bordercolorpicker5"
+   prefstring="extensions.bordercolors.id5"/>
+   </hbox>
+        <hbox id="borderbox6" hidden="true">
+  <label minwidth="375px" id="Identity6"  value="Account 6"/>
+  <colorpicker class="small-margin" type="button" palettename="standard" id="bordercolorpicker6"
+   prefstring="extensions.bordercolors.id6"/>
+   </hbox>
+        <hbox id="borderbox7" hidden="true">
+  <label minwidth="375px" id="Identity7"  value="Account 7"/>
+  <colorpicker class="small-margin" type="button" palettename="standard" id="bordercolorpicker7"
+   prefstring="extensions.bordercolors.id7"/>
+   </hbox>
+        <hbox id="borderbox8" hidden="true">
+  <label minwidth="375px" id="Identity8"  value="Account 8"/>
+  <colorpicker class="small-margin" type="button" palettename="standard" id="bordercolorpicker8"
+   prefstring="extensions.bordercolors.id8"/>
+   </hbox>
+        <hbox id="borderbox9" hidden="true">
+  <label minwidth="375px" id="Identity9"  value="Account 9"/>
+  <colorpicker class="small-margin" type="button" palettename="standard" id="bordercolorpicker9"
+   prefstring="extensions.bordercolors.id9"/>
+   </hbox>
+        <hbox id="borderbox10" hidden="true">
+  <label minwidth="375px" id="Identity10"  value="Account 10"/>
+  <colorpicker class="small-margin" type="button" palettename="standard" id="bordercolorpicker10"
+   prefstring="extensions.bordercolors.id10"/>
+   </hbox>
+        <hbox id="borderbox11" hidden="true">
+  <label minwidth="375px" id="Identity11"  value="Account 11"/>
+  <colorpicker class="small-margin" type="button" palettename="standard" id="bordercolorpicker11"
+   prefstring="extensions.bordercolors.id11"/>
+   </hbox>
+        <hbox id="borderbox12" hidden="true">
+  <label minwidth="375px" id="Identity12"  value="Account 12"/>
+  <colorpicker class="small-margin" type="button" palettename="standard" id="bordercolorpicker12"
+   prefstring="extensions.bordercolors.id12"/>
+   </hbox>
+        <hbox id="borderbox13" hidden="true">
+  <label minwidth="375px" id="Identity13"  value="Account 13"/>
+  <colorpicker class="small-margin" type="button" palettename="standard" id="bordercolorpicker13"
+   prefstring="extensions.bordercolors.id13"/>
+   </hbox>
+        <hbox id="borderbox14" hidden="true">
+  <label minwidth="375px" id="Identity14"  value="Account 14"/>
+  <colorpicker class="small-margin" type="button" palettename="standard" id="bordercolorpicker14"
+   prefstring="extensions.bordercolors.id14"/>
+   </hbox>
+        <hbox id="borderbox15" hidden="true">
+  <label minwidth="375px" id="Identity15"  value="Account 15"/>
+  <colorpicker class="small-margin" type="button" palettename="standard" id="bordercolorpicker15"
+   prefstring="extensions.bordercolors.id15"/>
+   </hbox>
+        <hbox id="borderbox16" hidden="true">
+  <label minwidth="375px" id="Identity16"  value="Account 16"/>
+  <colorpicker class="small-margin" type="button" palettename="standard" id="bordercolorpicker16"
+   prefstring="extensions.bordercolors.id16"/>
+   </hbox>
+        <hbox id="borderbox17" hidden="true">
+  <label minwidth="375px" id="Identity17"  value="Account 17"/>
+  <colorpicker class="small-margin" type="button" palettename="standard" id="bordercolorpicker17"
+   prefstring="extensions.bordercolors.id17"/>
+   </hbox>
+        <hbox id="borderbox18" hidden="true">
+  <label minwidth="375px" id="Identity18"  value="Account 18"/>
+  <colorpicker class="small-margin" type="button" palettename="standard" id="bordercolorpicker18"
+   prefstring="extensions.bordercolors.id18"/>
+   </hbox>
+     <hbox id="borderbox19" hidden="true">
+  <label minwidth="375px" id="Identity19"  value="Account 19"/>
+  <colorpicker class="small-margin" type="button" palettename="standard" id="bordercolorpicker19"
+   prefstring="extensions.bordercolors.id19"/>
+   </hbox>
+        <hbox id="borderbox20" hidden="true">
+  <label minwidth="375px" id="Identity20"  value="Account 20"/>
+  <colorpicker class="small-margin" type="button" palettename="standard" id="bordercolorpicker20"
+   prefstring="extensions.bordercolors.id20"/>
+   </hbox>
+   </vbox>
+   </groupbox>
+   <groupbox>
+   <caption value="&bordercolors.pref.otheroptions;"/>
+   <hbox>
+   <label control="BorderWidth" value="&bordercolors.pref.borderwidth;"/>
+   <menulist id="BorderWidth" rows="1" align="right"/>
+   </hbox>
+   </groupbox>
+   
+    </dialog>
