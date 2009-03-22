@@ -18,11 +18,9 @@
 
     <!-- The preview pane for the HTML version (initially not displayed) -->
     <vbox id="appcontent">
-        <vbox id="markdownPreviewBox" style="display: none">
-            <splitter collapse="before" class="test_b" resizeafter="farthest"/>
-            <iframe id="markdownPreview" type="content" src="chrome://markdown/content/preview.html" flex="4">
-            </iframe>
-        </vbox>
+        <splitter id="markdownPreviewSplitter" style="display: none;"/>
+        <iframe id="markdownPreview" type="content" src="chrome://markdown/content/preview.html" flex="1" style="display: none;">
+        </iframe>
     </vbox>
     <!--
     <toolbar id="composeToolbar2">

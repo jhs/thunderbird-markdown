@@ -9,7 +9,8 @@ var Markdown = {
 
         this.composer = window.gMsgCompose;
         this.editor   = this.composer.editor;
-        this.previewBox = document.getElementById('markdownPreviewBox');
+        this.splitter = document.getElementById('markdownPreviewSplitter');
+        this.iframe   = document.getElementById('markdownPreview');
         this.converter  = new Showdown.converter();
 
         dump('Contents: ' + this.editor.contentsMIMEType + '\n');
@@ -31,9 +32,8 @@ var Markdown = {
         // Can't use 'this' since the context is the HTML element.
         var text = Markdown.editor.outputToString('text/plain', Markdown.editor.eNone);
         var html = Markdown.converter.makeHtml(text);
-        var iframe = document.getElementById('markdownPreview');
         try {
-            var doc = iframe.contentDocument;
+            var doc = Markdown.iframe.contentDocument;
         }
         catch(TypeError) {
             dump('No document found\n');
@@ -59,7 +59,8 @@ var Markdown = {
             }
 
             // Display the HTML before rendering.
-            this.previewBox.style.display = null;
+            this.splitter.style.display = null;
+            this.iframe.style.display = null;
 
             // For some reason, rendering directly doesn't work, so delay it a bit.
             var th = this;
@@ -67,7 +68,8 @@ var Markdown = {
         }
         else {
             dump('Should NOT preview\n');
-            this.previewBox.style.display = 'none';
+            this.splitter.style.display = 'none';
+            this.iframe.style.display = 'none';
 
             // Detach the signal handlers.
             for(var a in events) {
