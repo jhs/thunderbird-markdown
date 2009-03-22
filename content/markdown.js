@@ -11,6 +11,7 @@ var Markdown = {
         this.editor   = this.composer.editor;
         this.previewBox = document.getElementById('markdownPreviewBox');
         this.converter  = new Showdown.converter();
+
         dump('Contents: ' + this.editor.contentsMIMEType + '\n');
 
         if(this.composer.composeHTML) {
@@ -20,38 +21,43 @@ var Markdown = {
 
         this.initialized = true;
         this.strings = document.getElementById("markdown-strings");
-
-        var frame = document.getElementById('content-frame');
-
-        var body = frame.contentDocument.body;
-        var events = ['NodeInserted', 'NodeRemoved', 'CharacterDataModified'];
-        var th = this;
-        for(var a in events) {
-            body.addEventListener('DOM' + events[a], function(ev) { th.renderHtml(th, ev); }, false);
-        }
     },
 
-    renderHtml: function(th, ev) {
-        var enabled = document.getElementById('toggleMarkdown').getAttribute('checked');
-        if(!enabled) {
-            dump('Preview not enabled\n');
-            return;
-        }
+    renderHtml: function() {
+        dump('Rendering\n');
 
-        var text = this.editor.outputToString('text/plain', this.editor.eNone);
-        var html = this.converter.makeHtml(text);
+        // Can't use 'this' since the context is the HTML element.
+        var text = Markdown.editor.outputToString('text/plain', Markdown.editor.eNone);
+        var html = Markdown.converter.makeHtml(text);
         document.getElementById('markdownPreviewBody').innerHTML = html;
     },
 
+    events: ['DOMNodeInserted', 'DOMNodeRemoved', 'DOMCharacterDataModified'],
+
     doPreview: function(checkbox) {
         var enabled = checkbox.getAttribute('checked');
+        var body    = document.getElementById('content-frame').contentDocument.body;
+
         if(enabled) {
             dump('Should preview\n');
+
+            // Hook into the mail body and update the HTML version as it changes.
+            for(var a in this.events) {
+                body.addEventListener(this.events[a], this.renderHtml, false);
+            }
+
+            // And do the first render now.
+            this.renderHtml();
             this.previewBox.style.display = null;
         }
         else {
             dump('Should NOT preview\n');
             this.previewBox.style.display = 'none';
+
+            // Detach the signal handlers.
+            for(var a in this.events) {
+                body.removeEventListener(this.events[a], this.renderHtml, false);
+            }
         }
 
         return true; // Allow setting the checkbox to happen.
