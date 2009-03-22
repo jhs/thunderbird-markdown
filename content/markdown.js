@@ -57,9 +57,12 @@ var Markdown = {
                 body.addEventListener(this.events[a], this.renderHtml, false);
             }
 
-            // And do the first render now.  Remember to display the HTML before rendering.
+            // Display the HTML before rendering.
             this.previewBox.style.display = null;
-            this.renderHtml();
+
+            // For some reason, rendering directly doesn't work, so delay it a bit.
+            var th = this;
+            window.setTimeout(function() { th.renderHtml(); }, 100);
         }
         else {
             dump('Should NOT preview\n');
