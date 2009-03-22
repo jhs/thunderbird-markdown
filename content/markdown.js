@@ -16,6 +16,8 @@ var Markdown = {
 
         if(this.composer.composeHTML) {
             dump('Nothing to do for HTML mail\n');
+            var toggler = document.getElementById('toggleMarkdown');
+            toggler.hidden = true;
             return;
         }
 
