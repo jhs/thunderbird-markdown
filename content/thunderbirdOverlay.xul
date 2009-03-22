@@ -4,5 +4,5 @@
 
 <overlay id="markdown-overlay"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-  <script src="overlay.js"/>
+  <script src="markdown.js"/>
 </overlay>
