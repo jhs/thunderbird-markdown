@@ -11,6 +11,19 @@
     </stringbundleset>
 
     <menupopup id="optionsMenuPopup">
-        <menuitem id="toggleMarkdown" label="&toggleMarkdown.label;" type="checkbox"/><!-- oncommand="Markdown.toggleMarkdown(event.target)"/> -->
+        <menuitem id="toggleMarkdown" label="&toggleMarkdown.label;" type="checkbox" oncommand="Markdown.doPreview(event.target)"/>
     </menupopup>
+
+    <!--
+    <toolbar id="composeToolbar2">
+        <toolbarbutton class="toolbarbutton-1"
+            image="chrome://markdown/content/preview.png"
+            id="button-markdownPreview"
+            label="&markdownPreviewButton.label;"
+            tooltiptext="&markdownPreviewButton.tooltip;" 
+            onCommand="Markdown.preview()"
+            now_label="&markdownPreviewButton.label;"
+            now_tooltiptext="&markdownPreviewButton.tooltip;"/>
+    </toolbar>
+    -->
 </overlay>

@@ -21,7 +21,9 @@ var Markdown = {
 
         var frame = document.getElementById('content-frame');
         var modified = function(ev) {
-            dump('modified\n');
+            dump('modified: ');
+            dump(document.getElementById('toggleMarkdown').getAttribute('checked'));
+            dump('\n');
         };
 
         var body = frame.contentDocument.body;
@@ -29,6 +31,19 @@ var Markdown = {
         for(var a in events) {
             body.addEventListener('DOM' + events[a], modified, false);
         }
+    },
+
+    doPreview: function(checkbox) {
+        debugger;
+        var enabled = checkbox.getAttribute('checked');
+        if(enabled) {
+            dump('Should preview\n');
+        }
+        else {
+            dump('Should NOT preview\n');
+        }
+
+        return true; // Allow setting the checkbox to happen.
     },
 
     /*
