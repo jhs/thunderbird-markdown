@@ -5,6 +5,7 @@
 <overlay id="markdown-overlay"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
     <script src="markdown.js"/>
+    <script src="showdown/compressed/showdown.js"/>
 
     <stringbundleset id="stringbundleset">
         <stringbundle id="markdown-strings" src="chrome://markdown/locale/markdown.properties"/>

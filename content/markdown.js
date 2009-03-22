@@ -10,6 +10,7 @@ var Markdown = {
         this.composer = window.gMsgCompose;
         this.editor   = this.composer.editor;
         this.previewBox = document.getElementById('markdownPreviewBox');
+        this.converter  = new Showdown.converter();
         dump('Contents: ' + this.editor.contentsMIMEType + '\n');
 
         if(this.composer.composeHTML) {
@@ -21,21 +22,28 @@ var Markdown = {
         this.strings = document.getElementById("markdown-strings");
 
         var frame = document.getElementById('content-frame');
-        var modified = function(ev) {
-            dump('modified: ');
-            dump(document.getElementById('toggleMarkdown').getAttribute('checked'));
-            dump('\n');
-        };
 
         var body = frame.contentDocument.body;
         var events = ['NodeInserted', 'NodeRemoved', 'CharacterDataModified'];
+        var th = this;
         for(var a in events) {
-            body.addEventListener('DOM' + events[a], modified, false);
+            body.addEventListener('DOM' + events[a], function(ev) { th.renderHtml(th, ev); }, false);
         }
     },
 
+    renderHtml: function(th, ev) {
+        var enabled = document.getElementById('toggleMarkdown').getAttribute('checked');
+        if(!enabled) {
+            dump('Preview not enabled\n');
+            return;
+        }
+
+        var text = this.editor.outputToString('text/plain', this.editor.eNone);
+        var html = this.converter.makeHtml(text);
+        document.getElementById('markdownPreviewBody').innerHTML = html;
+    },
+
     doPreview: function(checkbox) {
-        debugger;
         var enabled = checkbox.getAttribute('checked');
         if(enabled) {
             dump('Should preview\n');
