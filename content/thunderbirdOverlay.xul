@@ -4,5 +4,13 @@
 
 <overlay id="markdown-overlay"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-  <script src="markdown.js"/>
+    <script src="markdown.js"/>
+
+    <stringbundleset id="stringbundleset">
+        <stringbundle id="markdown-strings" src="chrome://markdown/locale/markdown.properties"/>
+    </stringbundleset>
+
+    <menupopup id="optionsMenuPopup">
+        <menuitem id="toggleMarkdown" label="&toggleMarkdown.label;" type="checkbox"/><!-- oncommand="Markdown.toggleMarkdown(event.target)"/> -->
+    </menupopup>
 </overlay>
