@@ -9,6 +9,7 @@ var Markdown = {
 
         this.composer = window.gMsgCompose;
         this.editor   = this.composer.editor;
+        this.previewBox = document.getElementById('markdownPreviewBox');
         dump('Contents: ' + this.editor.contentsMIMEType + '\n');
 
         if(this.composer.composeHTML) {
@@ -38,9 +39,11 @@ var Markdown = {
         var enabled = checkbox.getAttribute('checked');
         if(enabled) {
             dump('Should preview\n');
+            this.previewBox.style.display = null;
         }
         else {
             dump('Should NOT preview\n');
+            this.previewBox.style.display = 'none';
         }
 
         return true; // Allow setting the checkbox to happen.

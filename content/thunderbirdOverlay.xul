@@ -14,6 +14,20 @@
         <menuitem id="toggleMarkdown" label="&toggleMarkdown.label;" type="checkbox" oncommand="Markdown.doPreview(event.target)"/>
     </menupopup>
 
+
+    <!-- The preview pane for the HTML version (initially not displayed) -->
+    <vbox id="appcontent">
+        <vbox id="markdownPreviewBox" style="display: none">
+            <splitter collapse="before" class="test_b" resizeafter="farthest"/>
+            <canvas id="markdownPreview" width="200px" height="150px">
+                <html xmlns="http://www.w3.org/1999/xhtml">
+                    <body id="markdownPreviewBody">
+                        <h1>test</h1>
+                    </body>
+                </html>
+            </canvas>
+        </vbox>
+    </vbox>
     <!--
     <toolbar id="composeToolbar2">
         <toolbarbutton class="toolbarbutton-1"
