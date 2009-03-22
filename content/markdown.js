@@ -25,11 +25,22 @@ var Markdown = {
 
     renderHtml: function() {
         dump('Rendering\n');
+        debugger;
 
         // Can't use 'this' since the context is the HTML element.
         var text = Markdown.editor.outputToString('text/plain', Markdown.editor.eNone);
         var html = Markdown.converter.makeHtml(text);
-        document.getElementById('markdownPreviewBody').innerHTML = html;
+        var iframe = document.getElementById('markdownPreview');
+        try {
+            var doc = iframe.contentDocument;
+        }
+        catch(TypeError) {
+            dump('No document found\n');
+            return;
+        }
+
+        var body = doc.getElementById('markdownPreviewBody');
+        body.innerHTML = html;
     },
 
     events: ['DOMNodeInserted', 'DOMNodeRemoved', 'DOMCharacterDataModified'],
@@ -46,9 +57,9 @@ var Markdown = {
                 body.addEventListener(this.events[a], this.renderHtml, false);
             }
 
-            // And do the first render now.
-            this.renderHtml();
+            // And do the first render now.  Remember to display the HTML before rendering.
             this.previewBox.style.display = null;
+            this.renderHtml();
         }
         else {
             dump('Should NOT preview\n');

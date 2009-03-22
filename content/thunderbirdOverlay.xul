@@ -20,13 +20,14 @@
     <vbox id="appcontent">
         <vbox id="markdownPreviewBox" style="display: none">
             <splitter collapse="before" class="test_b" resizeafter="farthest"/>
+            <!--
             <canvas id="markdownPreview" width="200px" height="150px">
-                <html xmlns="http://www.w3.org/1999/xhtml">
-                    <body id="markdownPreviewBody">
-                        <h1>test</h1>
-                    </body>
-                </html>
+            -->
+            <iframe id="markdownPreview" type="content" src="chrome://markdown/content/preview.html" flex="4">
+            </iframe>
+            <!--
             </canvas>
+            -->
         </vbox>
     </vbox>
     <!--
