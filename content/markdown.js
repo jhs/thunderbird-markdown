@@ -25,7 +25,6 @@ var Markdown = {
 
     renderHtml: function() {
         dump('Rendering\n');
-        debugger;
 
         // Can't use 'this' since the context is the HTML element.
         var text = Markdown.editor.outputToString('text/plain', Markdown.editor.eNone);
@@ -43,18 +42,18 @@ var Markdown = {
         body.innerHTML = html;
     },
 
-    events: ['DOMNodeInserted', 'DOMNodeRemoved', 'DOMCharacterDataModified'],
 
     doPreview: function(checkbox) {
         var enabled = checkbox.getAttribute('checked');
         var body    = document.getElementById('content-frame').contentDocument.body;
+        var events  = ['DOMNodeInserted', 'DOMNodeRemoved', 'DOMCharacterDataModified'];
 
         if(enabled) {
             dump('Should preview\n');
 
             // Hook into the mail body and update the HTML version as it changes.
-            for(var a in this.events) {
-                body.addEventListener(this.events[a], this.renderHtml, false);
+            for(var a in events) {
+                body.addEventListener(events[a], this.renderHtml, false);
             }
 
             // Display the HTML before rendering.
@@ -69,8 +68,8 @@ var Markdown = {
             this.previewBox.style.display = 'none';
 
             // Detach the signal handlers.
-            for(var a in this.events) {
-                body.removeEventListener(this.events[a], this.renderHtml, false);
+            for(var a in events) {
+                body.removeEventListener(events[a], this.renderHtml, false);
             }
         }
 
